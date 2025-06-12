@@ -20,9 +20,639 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>Webcomponents</h2>
+          <section>
+            <h2>Webcomponents</h2>
+          </section>
+          <section>what are web components?</section>
+          <section data-auto-animate>
+            <blockquote>
+              <p>
+                Components is a suite of different technologies allowing you to
+                create reusable custom elements — with their functionality
+                encapsulated away from the rest of your code — and utilize them
+                in your web apps.
+              </p>
+              <cite>- mdn</cite>
+            </blockquote>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Basic</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends HTMLElement {
+  //
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Basic</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends HTMLParagraphElement {
+  //
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Basic</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends MyAbstructClass {
+  //
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Basic</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-5|5" class="hljs">class MyAwesomeComponent extends HTMLElement {
+  //
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+              <script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+              ...
+              <my-awesome-component></my-awesome-component>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Shadowdom</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends HTMLElement {
+  //
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Shadowdom</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-9|4|4-5" class="hljs">class MyAwesomeComponent extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    shadow.innerHTML = `<p>Hello from Shadow DOM!</p>`;
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Events</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-19|8-14" class="language-javascript">class MyAwesomeComponent extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+...
+<my-awesome-component></my-awesome-component>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-9|5-8" class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+...
+<my-awesome-component></my-awesome-component>
+<script>
+  document.querySelector("my-awesome-component")
+  .addEventListener("custom-event", (e) => {
+    console.log(e.detail);
+  });
+</script>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Attributes / hooks</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-19" class="language-javascript">class MyAwesomeComponent extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Attributes / hooks</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-35|3-5|23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    this.shadowRoot.querySelector('button').className = variant;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Attributes / hooks</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+
+  disconnectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    this.shadowRoot.querySelector('button').className = variant;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Attributes / hooks</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+
+  connectedMoveCallback() {
+    const variant = this.getAttribute('variant') || '';
+    this.shadowRoot.querySelector('button').className = variant;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Attributes / hooks</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+
+  adoptedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    this.shadowRoot.querySelector('button').className = variant;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Attributes / hooks</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    this.shadowRoot.querySelector('button').className = variant;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="3" class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+...
+<my-awesome-component></my-awesome-component>
+<script>
+  document.querySelector("my-awesome-component")
+  .addEventListener("custom-event", (e) => {
+    console.log(e.detail);
+  });
+</script>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="3" class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+...
+<my-awesome-component variant="primary"></my-awesome-component>
+<script>
+  document.querySelector("my-awesome-component")
+  .addEventListener("custom-event", (e) => {
+    console.log(e.detail);
+  });
+</script>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Slots / Template</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-35" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const button = document.createElement("button");
+
+    button.textContent = "Click me!";
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+    shadow.appendChild(button);
+  }
+
+  adoptedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    this.shadowRoot.querySelector('button').className = variant;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Slots / Template</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-35|10-17|20-33" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <button>
+        <slot></slot>
+      </button>
+    `;
+
+    shadow.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    const button = this.shadowRoot.querySelector('button');
+
+    button.className = variant
+
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+...
+<my-awesome-component variant="primary"></my-awesome-component>
+<script>
+  document.querySelector("my-awesome-component")
+  .addEventListener("custom-event", (e) => {
+    console.log(e.detail);
+  });
+</script>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Usage</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
+...
+<my-awesome-component variant="primary">
+  My Awesome Title
+</my-awesome-component>
+<script>
+  document.querySelector("my-awesome-component")
+  .addEventListener("custom-event", (e) => {
+    console.log(e.detail);
+  });
+</script>
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Styling</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-42" class="hljs">class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <button>
+        <slot></slot>
+      </button>
+    `;
+
+    shadow.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    const button = this.shadowRoot.querySelector('button');
+
+    button.className = variant
+
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example - Styling</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-55|15-24|1,12|1-55" class="hljs">import myCss from 'path-to-css.css?inline';
+
+class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    shadowRoot.innerHTML = `<style>${myCss}</style>`
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <style>
+        button {
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        ::slotted(h1) {
+          color: darkblue;
+        }
+      </style>
+      <button>
+        <slot></slot>
+      </button>
+    `;
+
+    shadow.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    const button = this.shadowRoot.querySelector('button');
+
+    button.className = variant
+
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
         </section>
-        <section>what are web components?</section>
         <section>why are they useful in modern web development?</section>
         <section>What are the Challenges:</section>
         <section>
