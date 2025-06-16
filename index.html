@@ -762,11 +762,11 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
             <strong>what is LIT?</strong>
             <ul>
               <li class="fragment fade-left">
-                Is a lightweight library built on top of Web Components to
-                simplify their development.
+                Lightweight library built on top of Web Components to simplify
+                their development.
               </li>
               <li class="fragment fade-left">
-                It provides a declarative syntax for rendering HTML templates,
+                Provides a declarative syntax for rendering HTML templates,
                 efficient reactivity for managing state and properties
               </li>
               <li class="fragment fade-left">
@@ -841,7 +841,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
             </code></pre>
           </section>
           <section data-auto-animate>
-            <h3>Example</h3>
+            <h3>Example - Custom Elements</h3>
             <pre
               data-id="code"
             ><code data-line-numbers="1-55|12-34" class="hljs">import myCss from 'path-to-css.css?inline';
@@ -903,10 +903,10 @@ class MyAwesomeComponent extends LitElement {
             </code></pre>
           </section>
           <section data-auto-animate>
-            <h3>Example</h3>
+            <h3>Example - Declarative Template / Scoped Styles</h3>
             <pre
               data-id="code"
-            ><code data-line-numbers="1-47|27-46" class="hljs">import { html, css, LitElement } from 'lit';
+            ><code data-line-numbers="1-47|23-46" class="hljs">import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 @customElement('my-awesome-component')
@@ -956,10 +956,10 @@ class MyAwesomeComponent extends LitElement {
             </code></pre>
           </section>
           <section data-auto-animate>
-            <h3>Example</h3>
+            <h3>Example - Reactive Properties / Events</h3>
             <pre
               data-id="code"
-            ><code data-line-numbers="1-47|27-46" class="hljs">import { html, css, LitElement } from 'lit';
+            ><code data-line-numbers="1-33" class="hljs">import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 @customElement('my-awesome-component')
@@ -978,13 +978,104 @@ class MyAwesomeComponent extends LitElement {
   @property()
   variant = '';
 
+  private _handleClick(e: Event) {
+    this.dispatchEvent(
+      new CustomEvent("custom-event", {
+        detail: "Hello World!"
+      })
+    );
+  }
+
   render() {
-    return html`<button class="${this.variant}">
+    return html`<button @click="${this._handleClick}" class="${this.variant}">
       <slot></slot>
     </button>`;
   }
 }
             </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Directives</h3>
+          </section>
+          <section data-auto-animate>
+            <strong>What are Directives?</strong>
+            <ul>
+              <li class="fragment fade-left">
+                Special functions that extend the behavior of templates.
+              </li>
+              <li class="fragment fade-left">
+                Allow you to add dynamic behavior, optimize rendering, and
+                handle complex logic directly in your HTML templates.
+              </li>
+            </ul>
+          </section>
+          <section data-auto-animate>
+            <strong>Why Use Directives?</strong>
+            <ul>
+              <li class="fragment fade-left">
+                Simplify common tasks like conditional rendering, repeating
+                lists, or managing asynchronous data.
+              </li>
+              <li class="fragment fade-left">
+                Improve performance by controlling how and when parts of the DOM
+                are updated.
+              </li>
+            </ul>
+          </section>
+          <section data-auto-animate>
+            <strong>map</strong>
+            <pre data-id="code"><code data-trim class="hljs">
+              class MyElement extends LitElement {
+                render() {
+                  return html`
+                    ${map(range(8), (i) => html`${i + 1}`)}
+                  `;
+                }
+              }
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <strong>when</strong>
+            <pre data-id="code"><code data-trim class="hljs">
+              class MyElement extends LitElement {
+                @property()
+                isLoading = true;
+
+                render() {
+                  return html`
+                    ${when(
+                        isLoading,
+                        () => html`<p>Loading...</p>`,
+                        () => html`<p>Content loaded!</p>`
+                      )}
+                  `;
+                }
+              }
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <section data-auto-animate>
+            <h2>Advantages</h2>
+            <ul>
+              <li class="fragment fade-left">Simplified Development</li>
+              <li class="fragment fade-left">Reactivity</li>
+              <li class="fragment fade-left">Directives</li>
+              <li class="fragment fade-left">Scoped Styles</li>
+              <li class="fragment fade-left">Performance</li>
+              <li class="fragment fade-left">Community and Ecosystem</li>
+              <li class="fragment fade-left">Framework-Agnostic</li>
+            </ul>
+          </section>
+          <section data-auto-animate>
+            <h2>Challenges</h2>
+            <ul>
+              <li class="fragment fade-left">Dependency</li>
+              <li class="fragment fade-left">Abstraction</li>
+              <li class="fragment fade-left">Compatibility</li>
+              <li class="fragment fade-left">Less Control</li>
+              <li class="fragment fade-left">Not a Standard</li>
+            </ul>
           </section>
         </section>
       </div>
