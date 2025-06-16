@@ -117,6 +117,10 @@ html * {
 /*********************************************
  * OTHER
  *********************************************/
+::marker {
+  color: orange;
+}
+
 .reveal p {
   margin: var(--r-block-margin) 0;
   line-height: 1.3;
