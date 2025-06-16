@@ -20,6 +20,9 @@
     <div class="reveal">
       <div class="slides">
         <section>
+          <h2>Webcomponents & LIT</h2>
+        </section>
+        <section>
           <section>
             <h2>Webcomponents</h2>
           </section>
@@ -655,27 +658,334 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
         </section>
         <section>
           <section data-auto-animate>
+            <h2>Advantages</h2>
+            <ul>
+              <li class="fragment fade-left">Standardized API</li>
+              <li class="fragment fade-left">Encapsulation</li>
+              <li class="fragment fade-left">Reusability</li>
+              <li class="fragment fade-left">Interoperability</li>
+              <li class="fragment fade-left">Future-Proof</li>
+              <li class="fragment fade-left">Tooling Independence</li>
+              <li class="fragment fade-left">Native Browser Support</li>
+            </ul>
+          </section>
+          <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
               <li class="fragment fade-left">Debugging and Maintenance</li>
+              <aside class="notes">
+                <strong>Debugging and Maintenance</strong>
+                <ul>
+                  <li>
+                    Debugging Web Components can be harder due to encapsulation
+                    (e.g., inspecting Shadow DOM content in browser dev tools).
+                  </li>
+                  <li>
+                    Maintaining a large library of Web Components can become
+                    cumbersome without proper documentation and tooling. - mutch
+                    boilerplate
+                  </li>
+                </ul>
+              </aside>
               <li class="fragment fade-left">Testing Complexity</li>
+              <aside class="notes">
+                <strong>Testing Complexity</strong>
+                <ul>
+                  <li>
+                    Testing Web Components can be more complex compared to
+                    traditional components in frameworks.
+                  </li>
+                  <li>
+                    Tools like Jest or Cypress may require additional
+                    configuration to handle Shadow DOM and custom elements.
+                  </li>
+                </ul>
+              </aside>
               <li class="fragment fade-left">Accessibility</li>
+              <aside class="notes">
+                <strong>Accessibility</strong>
+                <ul>
+                  <li>
+                    Ensuring accessibility (e.g., ARIA roles, keyboard
+                    navigation) requires extra effort, as Web Components do not
+                    provide built-in accessibility features.
+                  </li>
+                  <li>
+                    Developers must manually implement accessibility best
+                    practices for each component.
+                  </li>
+                </ul>
+              </aside>
               <li class="fragment fade-left">Adoption and Ecosystem</li>
+              <aside class="notes">
+                <strong>Adoption and Ecosystem</strong>
+                <ul>
+                  <li>
+                    The ecosystem around Web Components is still maturing
+                    compared to popular frameworks like React or Angular.
+                  </li>
+                  <li>
+                    Limited availability of pre-built, high-quality Web
+                    Components compared to framework-specific libraries.
+                  </li>
+                </ul>
+              </aside>
               <li class="fragment fade-left">Integration with Frameworks</li>
-              <li class="fragment fade-left">State Management</li>
+              <aside class="notes">
+                <strong>Integration with Frameworks</strong>
+                <ul>
+                  <li>
+                    While Web Components are framework-agnostic, integrating
+                    them into existing frameworks (e.g., React, Angular, Vue)
+                    can be challenging:
+                    <ul>
+                      <li>
+                        React, for example, doesn't natively support listening
+                        to custom events emitted by Web Components.
+                      </li>
+                      <li>
+                        Framework-specific tooling may not always play well with
+                        Web Components.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </aside>
             </ul>
           </section>
         </section>
         <section>
-          <h2>Lit</h2>
-        </section>
-        <section>What are the Challenges:</section>
-        <section>
-          What are the Challenges:
-          <section>Maintenance complexities.</section>
-          <section>Performance considerations.</section>
-          <section>Developer ergonomics.</section>
-          <section>Tooling.</section>
+          <section data-auto-animate>
+            <h2>Lit</h2>
+          </section>
+          <section data-auto-animate>
+            <strong>what is LIT?</strong>
+            <ul>
+              <li class="fragment fade-left">
+                Is a lightweight library built on top of Web Components to
+                simplify their development.
+              </li>
+              <li class="fragment fade-left">
+                It provides a declarative syntax for rendering HTML templates,
+                efficient reactivity for managing state and properties
+              </li>
+              <li class="fragment fade-left">
+                Built-in support for scoped styles, all while adhering to web
+                standards
+              </li>
+              <aside class="notes">
+                Lit is designed to reduce boilerplate and improve developer
+                ergonomics when working with Web Components.
+              </aside>
+            </ul>
+          </section>
+          <section data-auto-animate>
+            <h3>Example</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-55|55" class="hljs">import myCss from 'path-to-css.css?inline';
+
+class MyAwesomeComponent extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    shadowRoot.innerHTML = `<style>${myCss}</style>`
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <style>
+        button {
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        ::slotted(h1) {
+          color: darkblue;
+        }
+      </style>
+      <button>
+        <slot></slot>
+      </button>
+    `;
+
+    shadow.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    const button = this.shadowRoot.querySelector('button');
+
+    button.className = variant
+
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+
+customElements.define("my-awesome-component", MyAwesomeComponent);
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-55|12-34" class="hljs">import myCss from 'path-to-css.css?inline';
+import { LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+@customElement('my-awesome-component')
+class MyAwesomeComponent extends LitElement {
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    shadowRoot.innerHTML = `<style>${myCss}</style>`
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <style>
+        button {
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        ::slotted(h1) {
+          color: darkblue;
+        }
+      </style>
+      <button>
+        <slot></slot>
+      </button>
+    `;
+
+    shadow.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    const button = this.shadowRoot.querySelector('button');
+
+    button.className = variant
+
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-47|27-46" class="hljs">import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+@customElement('my-awesome-component')
+class MyAwesomeComponent extends LitElement {
+  static styles = css`
+    button {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    ::slotted(h1) {
+      color: darkblue;
+    }
+  `;
+
+  render() {
+    return html`<button>
+      <slot></slot>
+    </button>`;
+  }
+
+  static get observedAttributes() {
+    return ['variant'];
+  }
+
+  connectedCallback() {
+    const variant = this.getAttribute('variant') || '';
+    const button = this.shadowRoot.querySelector('button');
+
+    button.className = variant
+
+    button.addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("custom-event", {
+          detail: "Hello World!"
+        })
+      );
+    });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name === 'variant') {
+      this.shadowRoot.querySelector('button').className = newValue;
+    }
+  }
+}
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example</h3>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="1-47|27-46" class="hljs">import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+@customElement('my-awesome-component')
+class MyAwesomeComponent extends LitElement {
+  static styles = css`
+    button {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    ::slotted(h1) {
+      color: darkblue;
+    }
+  `;
+
+  @property()
+  variant = '';
+
+  render() {
+    return html`<button class="${this.variant}">
+      <slot></slot>
+    </button>`;
+  }
+}
+            </code></pre>
+          </section>
         </section>
       </div>
     </div>
