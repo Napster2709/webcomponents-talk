@@ -242,6 +242,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
 
 customElements.define("my-awesome-component", MyAwesomeComponent);
             </code></pre>
+            <aside class="notes">Custom element added to page.</aside>
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
@@ -284,6 +285,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
 
 customElements.define("my-awesome-component", MyAwesomeComponent);
             </code></pre>
+            <aside class="notes">Custom element removed from page.</aside>
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
@@ -326,6 +328,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
 
 customElements.define("my-awesome-component", MyAwesomeComponent);
             </code></pre>
+            <aside class="notes">Custom element moved with moveBefore()</aside>
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
@@ -368,6 +371,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
 
 customElements.define("my-awesome-component", MyAwesomeComponent);
             </code></pre>
+            <aside class="notes">Custom element moved to new page.</aside>
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
@@ -986,7 +990,7 @@ class MyAwesomeComponent extends LitElement {
             <pre>reactive properties / events</pre>
             <pre
               data-id="code"
-            ><code data-line-numbers="1-33" class="hljs">import { html, css, LitElement } from 'lit';
+            ><code data-line-numbers="1-33|17-18,20-26,29" class="hljs">import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 @customElement('my-awesome-component')
@@ -1014,7 +1018,51 @@ class MyAwesomeComponent extends LitElement {
   }
 
   render() {
-    return html`<button @click="${this._handleClick}" class="${this.variant}">
+    return html`<button @click=${this._handleClick} class="${this.variant}">
+      <slot></slot>
+    </button>`;
+  }
+}
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Example</h3>
+            <pre>reactive properties / events</pre>
+            <pre
+              data-id="code"
+            ><code data-line-numbers="20-21,33|32-33" class="hljs">import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+@customElement('my-awesome-component')
+class MyAwesomeComponent extends LitElement {
+  static styles = css`
+    button {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    ::slotted(h1) {
+      color: darkblue;
+    }
+  `;
+
+  @property()
+  variant = '';
+
+  @property({type: Boolean})
+  disabled = false;
+
+  private _handleClick(e: Event) {
+    this.dispatchEvent(
+      new CustomEvent("custom-event", {
+        detail: "Hello World!"
+      })
+    );
+  }
+
+  render() {
+    const classes = { variant: this.variant };
+    return html`<button @click=${this._handleClick} ?disabled=${disabled} class=${classMap(classes)}>
       <slot></slot>
     </button>`;
   }
@@ -1033,19 +1081,6 @@ class MyAwesomeComponent extends LitElement {
               <li class="fragment fade-left">
                 Allow you to add dynamic behavior, optimize rendering, and
                 handle complex logic directly in your HTML templates.
-              </li>
-            </ul>
-          </section>
-          <section data-auto-animate>
-            <strong>Why Use Directives?</strong>
-            <ul>
-              <li class="fragment fade-left">
-                Simplify common tasks like conditional rendering, repeating
-                lists, or managing asynchronous data.
-              </li>
-              <li class="fragment fade-left">
-                Improve performance by controlling how and when parts of the DOM
-                are updated.
               </li>
             </ul>
           </section>
@@ -1094,6 +1129,16 @@ class MyAwesomeComponent extends LitElement {
               <li class="fragment fade-left">Framework-Agnostic</li>
             </ul>
           </section>
+          <aside class="notes">
+            <strong>Performance</strong>
+            <ul>
+              <li>Weighing in at around 5 KB (minified and compressed)</li>
+              <li>
+                rendering is blazing fast, because Lit touches only the dynamic
+                parts of your UI when updating
+              </li>
+            </ul>
+          </aside>
           <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
