@@ -625,7 +625,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
             <pre class="marker">styles</pre>
             <pre
               data-id="code"
-            ><code data-line-numbers="1-55|15-24|1,12|1-55" class="hljs">import myCss from 'path-to-css.css?inline';
+            ><code data-line-numbers="1-55|15-24|1,12" class="hljs">import myCss from 'path-to-css.css?inline';
 
 class MyAwesomeComponent extends HTMLElement {
 
@@ -1127,24 +1127,22 @@ class MyAwesomeComponent extends LitElement {
               <li class="fragment fade-up">Community and Ecosystem</li>
               <li class="fragment fade-up">Framework-Agnostic</li>
             </ul>
+            <aside class="notes">
+              <strong>Performance</strong>
+              <ul>
+                <li>Weighing in at around 5 KB (minified and compressed)</li>
+                <li>
+                  rendering is blazing fast, because Lit touches only the
+                  dynamic parts of your UI when updating
+                </li>
+              </ul>
+            </aside>
           </section>
-          <aside class="notes">
-            <strong>Performance</strong>
-            <ul>
-              <li>Weighing in at around 5 KB (minified and compressed)</li>
-              <li>
-                rendering is blazing fast, because Lit touches only the dynamic
-                parts of your UI when updating
-              </li>
-            </ul>
-          </aside>
           <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
               <li class="fragment fade-up">Dependency</li>
               <li class="fragment fade-up">Abstraction</li>
-              <li class="fragment fade-up">Compatibility</li>
-              <li class="fragment fade-up">Less Control</li>
               <li class="fragment fade-up">Not a Standard</li>
             </ul>
           </section>
