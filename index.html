@@ -26,21 +26,20 @@
           <section>
             <h2>Webcomponents</h2>
           </section>
-          <section>what are web components?</section>
           <section data-auto-animate>
-            <blockquote>
+            <h5>what are web components?</h5>
+            <blockquote class="fragment fade-up">
               <p>
-                Components is a suite of different technologies allowing you to
-                create reusable custom elements — with their functionality
-                encapsulated away from the rest of your code — and utilize them
-                in your web apps.
+                Web Components are a set of web platform APIs that enable
+                developers to create
+                <strong>reusable, custom HTML elements</strong> with
+                encapsulated functionality and styling.
               </p>
-              <cite>- mdn</cite>
             </blockquote>
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>Basic</pre>
+            <pre class="marker">Basic</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -52,7 +51,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>Basic</pre>
+            <pre class="marker">Basic</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends HTMLParagraphElement {
@@ -64,7 +63,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>Basic</pre>
+            <pre class="marker">Basic</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends MyAbstructClass {
@@ -76,7 +75,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>Basic</pre>
+            <pre class="marker">Basic</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-5|5" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -88,7 +87,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
               <script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
               ...
@@ -97,7 +96,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>shadow-dom</pre>
+            <pre class="marker">shadow-dom</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-5" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -109,7 +108,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>shadow-dom</pre>
+            <pre class="marker">shadow-dom</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-9|4|4-5" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -125,7 +124,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>events</pre>
+            <pre class="marker">events</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-19|8-14" class="language-javascript">class MyAwesomeComponent extends HTMLElement {
@@ -151,7 +150,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre
               data-id="code"
             ><code data-line-numbers class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
@@ -161,7 +160,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-9|5-8" class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
@@ -177,7 +176,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>attributes / hooks</pre>
+            <pre class="marker">attributes / hooks</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-19" class="language-javascript">class MyAwesomeComponent extends HTMLElement {
@@ -203,7 +202,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>attributes / hooks</pre>
+            <pre class="marker">attributes / hooks</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-35|3-5|23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -246,7 +245,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>attributes / hooks</pre>
+            <pre class="marker">attributes / hooks</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -289,7 +288,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>attributes / hooks</pre>
+            <pre class="marker">attributes / hooks</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -332,7 +331,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>attributes / hooks</pre>
+            <pre class="marker">attributes / hooks</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -375,7 +374,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>attributes / hooks</pre>
+            <pre class="marker">attributes / hooks</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="23-32" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -417,7 +416,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="3" class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
@@ -433,7 +432,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="3" class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
@@ -449,7 +448,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>slots / templates</pre>
+            <pre class="marker">slots / templates</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-35" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -491,7 +490,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>slots / templates</pre>
+            <pre class="marker">slots / templates</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-35|10-17|20-33" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -540,7 +539,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre
               data-id="code"
             ><code data-line-numbers class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
@@ -556,7 +555,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>usage</pre>
+            <pre class="marker">usage</pre>
             <pre
               data-id="code"
             ><code data-line-numbers class="hljs"><script type="module" src="<path-to-my-awesome-component>.(m)js"></script>
@@ -574,7 +573,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>styles</pre>
+            <pre class="marker">styles</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-42" class="hljs">class MyAwesomeComponent extends HTMLElement {
@@ -623,7 +622,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>styles</pre>
+            <pre class="marker">styles</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-55|15-24|1,12|1-55" class="hljs">import myCss from 'path-to-css.css?inline';
@@ -688,19 +687,19 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           <section data-auto-animate>
             <h2>Advantages</h2>
             <ul>
-              <li class="fragment fade-left">Standardized API</li>
-              <li class="fragment fade-left">Encapsulation</li>
-              <li class="fragment fade-left">Reusability</li>
-              <li class="fragment fade-left">Interoperability</li>
-              <li class="fragment fade-left">Future-Proof</li>
-              <li class="fragment fade-left">Tooling Independence</li>
-              <li class="fragment fade-left">Native Browser Support</li>
+              <li class="fragment fade-up">Standardized API</li>
+              <li class="fragment fade-up">Encapsulation</li>
+              <li class="fragment fade-up">Reusability</li>
+              <li class="fragment fade-up">Interoperability</li>
+              <li class="fragment fade-up">Future-Proof</li>
+              <li class="fragment fade-up">Tooling Independence</li>
+              <li class="fragment fade-up">Native Browser Support</li>
             </ul>
           </section>
           <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
-              <li class="fragment fade-left">Debugging and Maintenance</li>
+              <li class="fragment fade-up">Debugging and Maintenance</li>
               <aside class="notes">
                 <strong>Debugging and Maintenance</strong>
                 <ul>
@@ -715,7 +714,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
                   </li>
                 </ul>
               </aside>
-              <li class="fragment fade-left">Testing Complexity</li>
+              <li class="fragment fade-up">Testing Complexity</li>
               <aside class="notes">
                 <strong>Testing Complexity</strong>
                 <ul>
@@ -729,7 +728,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
                   </li>
                 </ul>
               </aside>
-              <li class="fragment fade-left">Accessibility</li>
+              <li class="fragment fade-up">Accessibility</li>
               <aside class="notes">
                 <strong>Accessibility</strong>
                 <ul>
@@ -744,7 +743,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
                   </li>
                 </ul>
               </aside>
-              <li class="fragment fade-left">Adoption and Ecosystem</li>
+              <li class="fragment fade-up">Adoption and Ecosystem</li>
               <aside class="notes">
                 <strong>Adoption and Ecosystem</strong>
                 <ul>
@@ -758,7 +757,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
                   </li>
                 </ul>
               </aside>
-              <li class="fragment fade-left">Integration with Frameworks</li>
+              <li class="fragment fade-up">Integration with Frameworks</li>
               <aside class="notes">
                 <strong>Integration with Frameworks</strong>
                 <ul>
@@ -787,17 +786,17 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
             <h2>Lit</h2>
           </section>
           <section data-auto-animate>
-            <strong>what is LIT?</strong>
+            <h5>what is LIT?</h5>
             <ul>
-              <li class="fragment fade-left">
+              <li class="fragment fade-up">
                 Lightweight library built on top of Web Components to simplify
                 their development.
               </li>
-              <li class="fragment fade-left">
+              <li class="fragment fade-up">
                 Provides a declarative syntax for rendering HTML templates,
                 efficient reactivity for managing state and properties
               </li>
-              <li class="fragment fade-left">
+              <li class="fragment fade-up">
                 Built-in support for scoped styles, all while adhering to web
                 standards
               </li>
@@ -870,7 +869,7 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>custom elements</pre>
+            <pre class="marker">custom elements</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-55|12-34" class="hljs">import myCss from 'path-to-css.css?inline';
@@ -933,7 +932,7 @@ class MyAwesomeComponent extends LitElement {
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>declarative template / scoped styles</pre>
+            <pre class="marker">declarative template / scoped styles</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-47|23-46" class="hljs">import { html, css, LitElement } from 'lit';
@@ -987,7 +986,7 @@ class MyAwesomeComponent extends LitElement {
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>reactive properties / events</pre>
+            <pre class="marker">reactive properties / events</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="1-33|17-18,20-26,29" class="hljs">import { html, css, LitElement } from 'lit';
@@ -1027,7 +1026,7 @@ class MyAwesomeComponent extends LitElement {
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
-            <pre>reactive properties / events</pre>
+            <pre class="marker">reactive properties / events</pre>
             <pre
               data-id="code"
             ><code data-line-numbers="20-21,33|32-33" class="hljs">import { html, css, LitElement } from 'lit';
@@ -1073,12 +1072,12 @@ class MyAwesomeComponent extends LitElement {
             <h3>Directives</h3>
           </section>
           <section data-auto-animate>
-            <strong>What are Directives?</strong>
+            <h5>What are Directives?</h5>
             <ul>
-              <li class="fragment fade-left">
+              <li class="fragment fade-up">
                 Special functions that extend the behavior of templates.
               </li>
-              <li class="fragment fade-left">
+              <li class="fragment fade-up">
                 Allow you to add dynamic behavior, optimize rendering, and
                 handle complex logic directly in your HTML templates.
               </li>
@@ -1120,13 +1119,13 @@ class MyAwesomeComponent extends LitElement {
           <section data-auto-animate>
             <h2>Advantages</h2>
             <ul>
-              <li class="fragment fade-left">Simplified Development</li>
-              <li class="fragment fade-left">Reactivity</li>
-              <li class="fragment fade-left">Directives</li>
-              <li class="fragment fade-left">Scoped Styles</li>
-              <li class="fragment fade-left">Performance</li>
-              <li class="fragment fade-left">Community and Ecosystem</li>
-              <li class="fragment fade-left">Framework-Agnostic</li>
+              <li class="fragment fade-up">Simplified Development</li>
+              <li class="fragment fade-up">Reactivity</li>
+              <li class="fragment fade-up">Directives</li>
+              <li class="fragment fade-up">Scoped Styles</li>
+              <li class="fragment fade-up">Performance</li>
+              <li class="fragment fade-up">Community and Ecosystem</li>
+              <li class="fragment fade-up">Framework-Agnostic</li>
             </ul>
           </section>
           <aside class="notes">
@@ -1142,11 +1141,11 @@ class MyAwesomeComponent extends LitElement {
           <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
-              <li class="fragment fade-left">Dependency</li>
-              <li class="fragment fade-left">Abstraction</li>
-              <li class="fragment fade-left">Compatibility</li>
-              <li class="fragment fade-left">Less Control</li>
-              <li class="fragment fade-left">Not a Standard</li>
+              <li class="fragment fade-up">Dependency</li>
+              <li class="fragment fade-up">Abstraction</li>
+              <li class="fragment fade-up">Compatibility</li>
+              <li class="fragment fade-up">Less Control</li>
+              <li class="fragment fade-up">Not a Standard</li>
             </ul>
           </section>
         </section>
