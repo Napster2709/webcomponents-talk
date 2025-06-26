@@ -20,7 +20,17 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>Webcomponents & LIT</h2>
+          <h2>Imagine</h2>
+          <aside class="notes">
+            <ul>
+              <li>neues projekt</li>
+              <li>micro frontend</li>
+              <li>
+                Wärent sind entwickler um framework kebbeln soll eine
+                komponenten libary entwickelt werden.
+              </li>
+            </ul>
+          </aside>
         </section>
         <section>
           <section>
@@ -28,14 +38,20 @@
           </section>
           <section data-auto-animate>
             <h5>what are web components?</h5>
-            <blockquote class="fragment fade-up">
-              <p>
-                Web Components are a set of web platform APIs that enable
-                developers to create
-                <strong>reusable, custom HTML elements</strong> with
-                encapsulated functionality and styling.
-              </p>
-            </blockquote>
+            <ul>
+              <li class="fragment fade-up">Standardized API</li>
+              <li class="fragment fade-up">Encapsulation</li>
+              <li class="fragment fade-up">Reusability</li>
+              <li class="fragment fade-up">Interoperability</li>
+              <li class="fragment fade-up">Future-Proof</li>
+              <li class="fragment fade-up">Tooling Independence</li>
+            </ul>
+            <aside class="notes">
+              Webcomponents sind eine standart api, welche es ermöglicht
+              gekapselte und wiederverwendbare komponenten zu bauen. Diese sind
+              kompatible mit allen gängien frameworks, zukunftsfähig und
+              unabhängig von tooling
+            </aside>
           </section>
           <section data-auto-animate>
             <h3>Example</h3>
@@ -682,20 +698,6 @@ class MyAwesomeComponent extends HTMLElement {
 customElements.define("my-awesome-component", MyAwesomeComponent);
             </code></pre>
           </section>
-        </section>
-        <section>
-          <section data-auto-animate>
-            <h2>Advantages</h2>
-            <ul>
-              <li class="fragment fade-up">Standardized API</li>
-              <li class="fragment fade-up">Encapsulation</li>
-              <li class="fragment fade-up">Reusability</li>
-              <li class="fragment fade-up">Interoperability</li>
-              <li class="fragment fade-up">Future-Proof</li>
-              <li class="fragment fade-up">Tooling Independence</li>
-              <li class="fragment fade-up">Native Browser Support</li>
-            </ul>
-          </section>
           <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
@@ -788,19 +790,28 @@ customElements.define("my-awesome-component", MyAwesomeComponent);
           <section data-auto-animate>
             <h5>what is LIT?</h5>
             <ul>
+              <li class="fragment fade-up">Lightweight library</li>
               <li class="fragment fade-up">
-                Lightweight library built on top of Web Components to simplify
-                their development.
+                Declarative syntax for rendering HTML templates
               </li>
               <li class="fragment fade-up">
-                Provides a declarative syntax for rendering HTML templates,
-                efficient reactivity for managing state and properties
-              </li>
-              <li class="fragment fade-up">
-                Built-in support for scoped styles, all while adhering to web
-                standards
+                Built-in support for scoped styles
               </li>
               <aside class="notes">
+                <ul>
+                  <li>
+                    Lightweight library built on top of Web Components to
+                    simplify their development.
+                  </li>
+                  <li>
+                    Provides a declarative syntax for rendering HTML templates,
+                    efficient reactivity for managing state and properties
+                  </li>
+                  <li>
+                    Built-in support for scoped styles, all while adhering to
+                    web standards
+                  </li>
+                </ul>
                 Lit is designed to reduce boilerplate and improve developer
                 ergonomics when working with Web Components.
               </aside>
@@ -1141,7 +1152,6 @@ class MyAwesomeComponent extends LitElement {
           <section data-auto-animate>
             <h2>Challenges</h2>
             <ul>
-              <li class="fragment fade-up">Dependency</li>
               <li class="fragment fade-up">Abstraction</li>
               <li class="fragment fade-up">Not a Standard</li>
             </ul>
